@@ -5,15 +5,14 @@ const Counter = (props) => {
     const formatValue = () => {
         return value === 0 ? "empty" : value;
     };
-    const getBageClasses = () => {
+    const getBadgeClasses = () => {
         let classes = "badge m-2 ";
         classes += value === 0 ? "bg-warning" : "bg-primary";
         return classes;
     };
 
     const handleIncrement = () => {
-        console.log(props);
-        // setValue((prevState) => prevState + 1);
+        props.handleIncrement(props.id)
     };
     const handleDecrement = () => {
         console.log("handle decrement");
@@ -23,7 +22,7 @@ const Counter = (props) => {
     return (
         <div>
             <span> {props.name}</span>
-            <span className={getBageClasses()}>{formatValue()}</span>
+            <span className={getBadgeClasses()}>{formatValue()}</span>
             <button
                 className='btn btn-primary btn-sm m-2'
                 onClick={handleIncrement}

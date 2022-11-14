@@ -19,11 +19,17 @@ const CountersList = () => {
         setCounters(initialState);
         console.log("handle reset");
     };
+    const handleIncrement= (id) => {
+        const newCounters = [...counters]
+        const counterId = newCounters.findIndex(el => el.id === id)
+        newCounters[counterId].value++;
+        setCounters(newCounters);
+    }
 
     return (
         <>
             {counters.map((count) => (
-                <Counter key={count.id} onDelete={handleDelete} {...count} />
+                <Counter key={count.id} onDelete={handleDelete} handleIncrement={handleIncrement} {...count} />
             ))}
             <button
                 className='btn btn-primary btn-sm m-2'
